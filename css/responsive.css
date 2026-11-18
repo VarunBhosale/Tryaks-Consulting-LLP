@@ -31,16 +31,18 @@ body.nav-open {
 
   .philosophy-grid,
   .dashboard-grid {
-    grid-template-columns: 1fr;
-    gap: 3rem;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2.5rem;
+    min-width: 0;
+    max-width: 100%;
+    width: 100%;
   }
 
-  .philosophy-left {
-    max-width: 720px;
-  }
-
+  .philosophy-left,
   .dashboard-copy {
-    max-width: 720px;
+    max-width: 100%;
+    min-width: 0;
+    width: 100%;
   }
 
   .footer-top-grid {
@@ -73,7 +75,7 @@ body.nav-open {
     left: 0;
     right: 0;
     bottom: 0;
-    width: 100vw;
+    width: 100%;
     height: calc(100vh - 68px);
     height: calc(100dvh - 68px);
     background-color: #fefaf3 !important; /* 100% opaque, zero bleed-through */
@@ -291,6 +293,98 @@ body.nav-open {
     text-align: center;
     margin: 0 auto;
   }
+
+  /* ── Dashboard Mobile Alignment & Overflow Prevention ── */
+  .dashboard-section {
+    overflow: hidden;
+  }
+
+  .dashboard-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2.25rem;
+    min-width: 0;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .dashboard-copy {
+    min-width: 0;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .dashboard-copy h2 {
+    font-size: clamp(1.65rem, 5vw, 2.25rem);
+    line-height: 1.18;
+    overflow-wrap: break-word;
+  }
+
+  .dashboard-testimonial {
+    padding: 1.15rem 1rem;
+    margin-top: 1.25rem;
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .live-dashboard-card {
+    padding: 1.25rem 1rem;
+    min-width: 0;
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .dash-metrics-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+    min-width: 0;
+    width: 100%;
+  }
+
+  .dash-metric-box {
+    padding: 0.85rem 0.25rem;
+    min-width: 0;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+
+  .metric-num {
+    font-size: clamp(1.35rem, 4vw, 1.75rem);
+    margin-bottom: 0.25rem;
+  }
+
+  .metric-lbl {
+    font-size: 0.62rem;
+    letter-spacing: 0.02em;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .timeline-row {
+    padding: 0.65rem 0.75rem;
+    gap: 0.5rem;
+    min-width: 0;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .timeline-name {
+    font-size: 0.78rem;
+    line-height: 1.35;
+    min-width: 0;
+    flex: 1 1 auto;
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+
+  .timeline-badge {
+    font-size: 0.65rem;
+    padding: 0.18rem 0.45rem;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
 }
 
 /* ── 5. Small Mobile Screens (max-width: 480px) ── */
@@ -378,12 +472,24 @@ body.nav-open {
 /* ── 6. Ultra-Small Phones (max-width: 360px) ── */
 @media (max-width: 360px) {
   .dash-metrics-grid {
-    grid-template-columns: 1fr;
-    gap: 0.65rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.35rem;
+  }
+
+  .dash-metric-box {
+    padding: 0.65rem 0.2rem;
+  }
+
+  .metric-num {
+    font-size: 1.25rem;
+  }
+
+  .metric-lbl {
+    font-size: 0.55rem;
   }
 
   .hero-headline {
-    font-size: 1.85rem;
+    font-size: 1.65rem;
   }
 }
 
