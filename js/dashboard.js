@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
         obs.disconnect();
       }
     });
-  }, { threshold: 0.3 });
+  }, { threshold: 0.15 });
 
   const dashboardSection = document.querySelector(".dashboard-section");
   if (dashboardSection) {

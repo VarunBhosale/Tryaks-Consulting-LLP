@@ -8,11 +8,12 @@
   left: 0;
   width: 100%;
   z-index: 1000;
-  background-color: rgba(254, 250, 243, 0.94);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background-color: rgba(254, 250, 243, 0.95);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--border-subtle);
-  transition: background-color var(--transition-base), border-color var(--transition-base);
+  transition: background-color var(--transition-base), box-shadow var(--transition-base);
+  padding-top: env(safe-area-inset-top);
 }
 
 .header-inner {
@@ -20,6 +21,7 @@
   align-items: center;
   justify-content: space-between;
   height: 76px;
+  gap: 1rem;
 }
 
 /* ── Brand Logo ── */
@@ -28,6 +30,8 @@
   align-items: center;
   gap: 0.75rem;
   text-decoration: none;
+  flex-shrink: 0;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .brand-monogram {
@@ -43,6 +47,7 @@
   font-weight: 700;
   border-radius: var(--radius-xs);
   letter-spacing: -0.04em;
+  flex-shrink: 0;
 }
 
 .brand-text-group {
@@ -84,10 +89,13 @@
   transition: color var(--transition-fast);
   position: relative;
   padding: 0.5rem 0;
+  -webkit-tap-highlight-color: transparent;
 }
 
-.nav-link:hover {
-  color: var(--text-primary);
+@media (hover: hover) and (pointer: fine) {
+  .nav-link:hover {
+    color: var(--text-primary);
+  }
 }
 
 /* Dropdown item */
@@ -99,6 +107,7 @@
   display: flex;
   align-items: center;
   gap: 0.35rem;
+  cursor: pointer;
 }
 
 .dropdown-trigger svg {
@@ -143,9 +152,11 @@
   transition: all var(--transition-fast);
 }
 
-.dropdown-link:hover {
-  background-color: var(--bg-subtle);
-  color: var(--text-primary);
+@media (hover: hover) and (pointer: fine) {
+  .dropdown-link:hover {
+    background-color: var(--bg-subtle);
+    color: var(--text-primary);
+  }
 }
 
 /* ── Right Actions ── */
@@ -153,6 +164,7 @@
   display: flex;
   align-items: center;
   gap: 1rem;
+  flex-shrink: 0;
 }
 
 /* ── Mobile Toggle ── */
@@ -160,20 +172,23 @@
   display: none;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   gap: 5px;
-  width: 32px;
-  height: 32px;
+  width: 44px; /* 44px minimum tap target */
+  height: 44px;
   background: none;
   border: none;
-  padding: 4px;
+  padding: 8px;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .mobile-toggle span {
   display: block;
-  width: 100%;
+  width: 22px;
   height: 2px;
   background-color: var(--text-primary);
+  border-radius: 2px;
   transition: all var(--transition-fast);
 }
 

@@ -1,5 +1,6 @@
 /* ==========================================================================
    reset.css — Modern CSS Reset & Baseline
+   Universal cross-browser & multi-device baseline
    ========================================================================== */
 
 *, *::before, *::after {
@@ -12,6 +13,8 @@ html {
   font-size: 16px;
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 body {
@@ -23,6 +26,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  width: 100%;
+  position: relative;
 }
 
 img, svg, picture, video {
@@ -40,6 +45,10 @@ a {
   color: inherit;
   text-decoration: none;
   transition: opacity var(--transition-fast), color var(--transition-fast);
+}
+
+button, a {
+  touch-action: manipulation;
 }
 
 ul, ol {

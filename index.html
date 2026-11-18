@@ -2,7 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#fefaf3" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="format-detection" content="telephone=no" />
   <title>Tryaks Consulting LLP — AI Enabled Digital Transformation</title>
   <meta name="description" content="Tryaks Consulting LLP architects and engineers autonomous AI agents, enterprise automations, and modern platforms for ambitious, fast-moving enterprises." />
   <meta name="keywords" content="AI Consulting, Digital Transformation, AI Agents, Enterprise Automation, Cloud Systems, Tryaks Consulting" />
@@ -60,6 +64,10 @@
             <a href="#contact" class="dropdown-link">Contact Us</a>
           </div>
         </div>
+
+        <div class="mobile-nav-cta">
+          <a href="#contact" class="btn-pill btn-pill-dark btn-block">Get in Touch <span class="btn-arrow">→</span></a>
+        </div>
       </nav>
 
       <div class="header-actions">
@@ -112,142 +120,73 @@
             Trusted by 150+ innovators across real estate, finance, healthcare, technology and more.
           </p>
         </div>
-
-        <div class="carousel-controls">
-          <button class="carousel-btn" id="carouselPrev" aria-label="Previous client project">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
-          </button>
-          <button class="carousel-btn" id="carouselNext" aria-label="Next client project">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
-          </button>
-        </div>
       </div>
 
       <div class="carousel-viewport" id="showcaseViewport">
         <div class="carousel-track">
-          <!-- Card 1: Qualaro -->
-          <article class="showcase-card">
-            <div class="card-image-wrap">
-              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=700&q=80" alt="Qualaro automated sales platform" loading="lazy" />
-              <div class="card-image-overlay">
-                <span class="status-badge"><span class="status-dot"></span> B2B SaaS</span>
-              </div>
-            </div>
-            <div class="card-content">
-              <span class="card-client">Qualaro · United Kingdom</span>
-              <h3 class="card-headline font-italic">Prospecting, automated.</h3>
-              <p class="card-description">
-                Engineered an AI-native lead qualification pipeline and agentic prospecting system that automated 80% of inbound sales qualification.
-              </p>
-              <div class="card-footer">
-                <span>AI &amp; Automation</span>
-                <a href="#contact" class="card-link">See story →</a>
-              </div>
+          <!-- Card 1: Barnes Yachting -->
+          <article class="showcase-card" style="background-image: url('https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?auto=format&fit=crop&w=800&q=80')">
+            <div class="showcase-card-overlay"></div>
+            <div class="showcase-card-content">
+              <h3 class="showcase-card-title">Luxury, fully digital</h3>
+              <p class="showcase-card-category">Luxury Real Estate &amp; Yachting</p>
+              <p class="showcase-card-location">United Kingdom / USA</p>
+              <a href="#contact" class="showcase-card-btn">See their story</a>
             </div>
           </article>
 
-          <!-- Card 2: We Complement -->
-          <article class="showcase-card">
-            <div class="card-image-wrap">
-              <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=700&q=80" alt="We Complement financial quotes platform" loading="lazy" />
-              <div class="card-image-overlay">
-                <span class="status-badge"><span class="status-dot"></span> FinTech</span>
-              </div>
-            </div>
-            <div class="card-content">
-              <span class="card-client">We Complement · United Kingdom</span>
-              <h3 class="card-headline font-italic">Accurate quotes, instantly.</h3>
-              <p class="card-description">
-                Built a high-scale pricing engine and real-time underwriting portal that cut customer turnaround from 4 days to 45 seconds.
-              </p>
-              <div class="card-footer">
-                <span>Financial Services</span>
-                <a href="#contact" class="card-link">See story →</a>
-              </div>
+          <!-- Card 2: Qualaro -->
+          <article class="showcase-card" style="background-image: url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80')">
+            <div class="showcase-card-overlay"></div>
+            <div class="showcase-card-content">
+              <h3 class="showcase-card-title">Prospecting, automated</h3>
+              <p class="showcase-card-category">B2B SaaS | AI &amp; Automation</p>
+              <p class="showcase-card-location">United Kingdom</p>
+              <a href="#contact" class="showcase-card-btn">See their story</a>
             </div>
           </article>
 
-          <!-- Card 3: Barnes Yachting -->
-          <article class="showcase-card">
-            <div class="card-image-wrap">
-              <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=700&q=80" alt="Barnes Yachting digital hub" loading="lazy" />
-              <div class="card-image-overlay">
-                <span class="status-badge"><span class="status-dot"></span> Enterprise Hub</span>
-              </div>
-            </div>
-            <div class="card-content">
-              <span class="card-client">Barnes Yachting · Global</span>
-              <h3 class="card-headline font-italic">Luxury, fully digital.</h3>
-              <p class="card-description">
-                Designed and deployed the unified Barnes Digital Hub connecting CRM, broker portals, charter fleet data rooms, and automated client journeys.
-              </p>
-              <div class="card-footer">
-                <span>Luxury &amp; Maritime</span>
-                <a href="#contact" class="card-link">See story →</a>
-              </div>
+          <!-- Card 3: We Complement -->
+          <article class="showcase-card" style="background-image: url('https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80')">
+            <div class="showcase-card-overlay"></div>
+            <div class="showcase-card-content">
+              <h3 class="showcase-card-title">Accurate quotes, instantly</h3>
+              <p class="showcase-card-category">Financial Services</p>
+              <p class="showcase-card-location">United Kingdom</p>
+              <a href="#contact" class="showcase-card-btn">See their story</a>
             </div>
           </article>
 
           <!-- Card 4: Pink Coconuts -->
-          <article class="showcase-card">
-            <div class="card-image-wrap">
-              <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=700&q=80" alt="Pink Coconuts AI workforce platform" loading="lazy" />
-              <div class="card-image-overlay">
-                <span class="status-badge"><span class="status-dot"></span> AI Agents</span>
-              </div>
-            </div>
-            <div class="card-content">
-              <span class="card-client">Pink Coconuts · United States</span>
-              <h3 class="card-headline font-italic">Training by text.</h3>
-              <p class="card-description">
-                Built an SMS-driven micro-learning AI assistant for distributed hospitality teams that boosted frontline compliance to 94%.
-              </p>
-              <div class="card-footer">
-                <span>Workforce Intelligence</span>
-                <a href="#contact" class="card-link">See story →</a>
-              </div>
+          <article class="showcase-card" style="background-image: url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80')">
+            <div class="showcase-card-overlay"></div>
+            <div class="showcase-card-content">
+              <h3 class="showcase-card-title">Training by text</h3>
+              <p class="showcase-card-category">Travel, Hospitality &amp; Workforce AI</p>
+              <p class="showcase-card-location">United States</p>
+              <a href="#contact" class="showcase-card-btn">See their story</a>
             </div>
           </article>
 
           <!-- Card 5: Finparter -->
-          <article class="showcase-card">
-            <div class="card-image-wrap">
-              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=700&q=80" alt="Finparter finance portal" loading="lazy" />
-              <div class="card-image-overlay">
-                <span class="status-badge"><span class="status-dot"></span> Cloud ERP</span>
-              </div>
-            </div>
-            <div class="card-content">
-              <span class="card-client">Finparter · Portugal</span>
-              <h3 class="card-headline font-italic">Everything, in one place.</h3>
-              <p class="card-description">
-                Consolidated 6 fragmented accounting applications into a unified cloud workspace with autonomous document reconciliation.
-              </p>
-              <div class="card-footer">
-                <span>Finance &amp; Operations</span>
-                <a href="#contact" class="card-link">See story →</a>
-              </div>
+          <article class="showcase-card" style="background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80')">
+            <div class="showcase-card-overlay"></div>
+            <div class="showcase-card-content">
+              <h3 class="showcase-card-title">Everything, in one place</h3>
+              <p class="showcase-card-category">Finance &amp; Operations</p>
+              <p class="showcase-card-location">Portugal</p>
+              <a href="#contact" class="showcase-card-btn">See their story</a>
             </div>
           </article>
 
           <!-- Card 6: Resolve 53 -->
-          <article class="showcase-card">
-            <div class="card-image-wrap">
-              <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=700&q=80" alt="Resolve 53 operational automation" loading="lazy" />
-              <div class="card-image-overlay">
-                <span class="status-badge"><span class="status-dot"></span> Automation</span>
-              </div>
-            </div>
-            <div class="card-content">
-              <span class="card-client">Resolve 53 · Global</span>
-              <h3 class="card-headline font-italic">Ops on autopilot.</h3>
-              <p class="card-description">
-                Autonomous workflow orchestrations coordinating cross-border compliance documents, CRM synchronization, and client notifications.
-              </p>
-              <div class="card-footer">
-                <span>Enterprise Consulting</span>
-                <a href="#contact" class="card-link">See story →</a>
-              </div>
+          <article class="showcase-card" style="background-image: url('https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80')">
+            <div class="showcase-card-overlay"></div>
+            <div class="showcase-card-content">
+              <h3 class="showcase-card-title">Ops on autopilot</h3>
+              <p class="showcase-card-category">AI &amp; Automation Consulting</p>
+              <p class="showcase-card-location">Global</p>
+              <a href="#contact" class="showcase-card-btn">See their story</a>
             </div>
           </article>
         </div>
