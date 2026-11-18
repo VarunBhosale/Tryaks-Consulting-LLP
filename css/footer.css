@@ -1,19 +1,19 @@
 /* ==========================================================================
    footer.css — Editorial Multi-Column Footer & Newsletter
-   Matches 42district's editorial footer layout with mobile safe area support
+   Matches 42district's editorial footer layout with mobile 3-column & middle alignment
    ========================================================================== */
 
 .site-footer {
   background-color: var(--bg-surface);
   border-top: 1px solid var(--border-subtle);
-  padding-top: clamp(3.5rem, 7vw, 7rem);
+  padding-top: clamp(3.5rem, 7vw, 6.5rem);
   padding-bottom: max(clamp(2rem, 4vw, 3rem), env(safe-area-inset-bottom));
 }
 
 .footer-top-grid {
   display: grid;
-  grid-template-columns: 1.35fr 2fr;
-  gap: clamp(2.5rem, 5vw, 5rem);
+  grid-template-columns: 1.3fr 2fr;
+  gap: clamp(2rem, 4.5vw, 4.5rem);
   margin-bottom: clamp(2rem, 4vw, var(--spacing-3xl));
 }
 
@@ -71,7 +71,7 @@
   min-height: 44px;
   background-color: var(--bg-primary);
   border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-sm);
   font-size: 0.875rem;
   color: var(--text-primary);
   outline: none;
@@ -89,11 +89,11 @@
   line-height: 1.5;
 }
 
-/* ── Nav Columns ── */
+/* ── Nav Columns (3 Columns on Desktop & Mobile matching 42district Image 2) ── */
 .footer-columns {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: clamp(1.5rem, 3vw, 2.5rem);
+  gap: clamp(1rem, 2.5vw, 2.5rem);
 }
 
 .footer-col h4 {
@@ -140,35 +140,34 @@
   color: var(--text-muted);
 }
 
+/* Horizontal Social Text Links (Matches Image 2) */
 .footer-social-links {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 1.75rem;
 }
 
-.social-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px; /* 44px minimum tap target */
-  height: 44px;
-  border-radius: 50%;
-  border: 1px solid var(--border-subtle);
+.footer-social-text {
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 500;
   color: var(--text-primary);
-  transition: all var(--transition-fast);
+  text-decoration: none;
+  transition: color var(--transition-fast), opacity var(--transition-fast);
   -webkit-tap-highlight-color: transparent;
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .social-btn:hover {
-    background-color: var(--bg-dark);
-    color: var(--text-inverse);
-    border-color: var(--bg-dark);
+  .footer-social-text:hover {
+    color: var(--text-primary);
+    text-decoration: underline;
   }
 }
 
-.social-btn:active {
-  transform: scale(0.95);
+.footer-copyright {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.5;
 }
 
 .footer-legal-links {
@@ -179,12 +178,17 @@
 }
 
 .footer-legal-links a {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-decoration: none;
   padding: 0.25rem 0;
+  transition: color var(--transition-fast);
   -webkit-tap-highlight-color: transparent;
 }
 
 @media (hover: hover) and (pointer: fine) {
   .footer-legal-links a:hover {
     color: var(--text-primary);
+    text-decoration: underline;
   }
 }

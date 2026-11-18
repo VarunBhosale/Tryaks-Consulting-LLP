@@ -1,18 +1,18 @@
 /* ==========================================================================
    hero.css — Editorial Hero Section
-   Matches 42district's Caslon condensed headline & italic emphasis
+   Balanced headline font size & elegant typography hierarchy
    ========================================================================== */
 
 .hero-section {
   position: relative;
-  padding-top: clamp(3rem, 8vw, 7.5rem);
-  padding-bottom: clamp(3rem, 7vw, 6rem);
+  padding-top: clamp(2.5rem, 6vw, 5.5rem);
+  padding-bottom: clamp(2.5rem, 5.5vw, 4.5rem);
   border-bottom: 1px solid var(--border-subtle);
   background: radial-gradient(circle at 50% 0%, rgba(247, 242, 234, 0.75) 0%, rgba(254, 250, 243, 0) 70%);
 }
 
 .hero-inner {
-  max-width: 980px;
+  max-width: 920px;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
@@ -21,17 +21,20 @@
 .hero-badge-wrap {
   display: flex;
   justify-content: center;
-  margin-bottom: clamp(1.25rem, 3vw, var(--spacing-xl));
+  margin-bottom: clamp(1rem, 2.5vw, 1.5rem);
 }
 
 .hero-headline {
-  margin-bottom: var(--spacing-lg);
+  margin-bottom: var(--spacing-md);
   font-family: var(--font-serif);
-  font-size: clamp(2rem, 5.5vw, 4.75rem);
+  font-size: clamp(1.85rem, 3.8vw, 3.25rem); /* Reduced from 4.75rem down to 3.25rem for an elegant, balanced scale */
   font-weight: 400;
-  line-height: 1.08;
-  letter-spacing: -0.025em;
+  line-height: 1.16;
+  letter-spacing: -0.02em;
   color: var(--text-primary);
+  max-width: 860px;
+  margin-left: auto;
+  margin-right: auto;
   overflow-wrap: break-word;
 }
 
@@ -40,13 +43,13 @@
 }
 
 .hero-subheadline {
-  font-size: clamp(1rem, 1.5vw, 1.3rem);
+  font-size: clamp(0.95rem, 1.25vw, 1.15rem);
   color: var(--text-secondary);
-  line-height: 1.6;
-  max-width: 760px;
+  line-height: 1.65;
+  max-width: 780px;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: clamp(1.75rem, 4vw, var(--spacing-2xl));
+  margin-bottom: clamp(1.5rem, 3.5vw, var(--spacing-xl));
   padding: 0 0.5rem;
 }
 
@@ -59,6 +62,6 @@
 }
 
 .hero-actions .btn-pill {
-  padding: 0.85rem 1.85rem;
-  font-size: 0.95rem;
+  padding: 0.8rem 1.75rem;
+  font-size: 0.925rem;
 }
