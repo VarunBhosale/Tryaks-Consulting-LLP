@@ -13,6 +13,7 @@
   padding-right: var(--container-padding);
   padding-left: max(var(--container-padding), env(safe-area-inset-left));
   padding-right: max(var(--container-padding), env(safe-area-inset-right));
+  box-sizing: border-box;
 }
 
 .container-narrow {
@@ -24,6 +25,7 @@
   padding-right: var(--container-padding);
   padding-left: max(var(--container-padding), env(safe-area-inset-left));
   padding-right: max(var(--container-padding), env(safe-area-inset-right));
+  box-sizing: border-box;
 }
 
 /* ── Buttons ── */

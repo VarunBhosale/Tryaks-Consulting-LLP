@@ -13,9 +13,16 @@
 
 .philosophy-grid {
   display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
   gap: clamp(2rem, 4.5vw, 5rem);
   align-items: center;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.philosophy-left {
+  min-width: 0;
+  max-width: 100%;
 }
 
 .philosophy-quote {
@@ -32,12 +39,15 @@
   line-height: 1.6;
   color: var(--text-secondary);
   margin-bottom: var(--spacing-xl);
+  overflow-wrap: break-word;
 }
 
 .philosophy-features {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .feature-item {
@@ -46,6 +56,9 @@
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
   transition: all var(--transition-fast);
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -72,15 +85,18 @@
   display: inline-flex;
   align-items: center;
   gap: 0.65rem;
-  padding: 0.75rem 1.25rem;
+  padding: 0.75rem 1.15rem;
   background-color: var(--bg-subtle);
   border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-pill);
-  font-size: 0.85rem;
+  border-radius: var(--radius-sm);
+  font-size: clamp(0.78rem, 2vw, 0.85rem);
   font-style: italic;
   color: var(--text-primary);
   margin-top: 1.25rem;
   max-width: 100%;
+  line-height: 1.5;
+  box-sizing: border-box;
+  overflow-wrap: break-word;
 }
 
 /* ── Section 6: Core Services / Solutions Grid ("Our Expertise") ── */
@@ -113,6 +129,9 @@
   flex-direction: column;
   transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
   position: relative;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -208,42 +227,63 @@
   padding-bottom: clamp(3.5rem, 7vw, 7.5rem);
   border-bottom: 1px solid var(--border-subtle);
   background-color: var(--bg-primary);
+  overflow: hidden;
+  max-width: 100%;
 }
 
 .dashboard-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: clamp(2rem, 4vw, 4.5rem);
   align-items: center;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.dashboard-copy {
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: break-word;
 }
 
 .dashboard-copy h2 {
   margin-bottom: var(--spacing-lg);
-  font-size: clamp(2rem, 3.5vw, 3.25rem);
+  font-size: clamp(1.85rem, 3.5vw, 3.25rem);
+  overflow-wrap: break-word;
+}
+
+.dashboard-copy p {
+  overflow-wrap: break-word;
 }
 
 .dashboard-testimonial {
   margin-top: clamp(1.5rem, 3vw, var(--spacing-2xl));
-  padding: 1.5rem;
+  padding: clamp(1.15rem, 2.5vw, 1.5rem);
   background-color: var(--bg-surface);
   border-left: 3px solid var(--text-primary);
   border-radius: var(--radius-xs);
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-wrap: break-word;
 }
 
 .dashboard-testimonial p {
   font-style: italic;
-  font-size: 0.95rem;
+  font-size: clamp(0.875rem, 1.8vw, 0.95rem);
   color: var(--text-primary);
   margin-bottom: 0.75rem;
   line-height: 1.6;
+  overflow-wrap: break-word;
 }
 
 .testimonial-author {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: clamp(0.68rem, 1.6vw, 0.75rem);
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--text-muted);
+  display: block;
 }
 
 /* Interactive Build Card */
@@ -251,8 +291,13 @@
   background-color: var(--bg-surface);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
-  padding: clamp(1.5rem, 3vw, 2.25rem);
+  padding: clamp(1.25rem, 3vw, 2.25rem);
   box-shadow: var(--shadow-card);
+  min-width: 0;
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .dash-header {
@@ -264,15 +309,18 @@
   margin-bottom: 1.5rem;
   flex-wrap: wrap;
   gap: 0.5rem;
+  min-width: 0;
+  width: 100%;
 }
 
 .dash-title {
   font-family: var(--font-mono);
-  font-size: 0.85rem;
+  font-size: clamp(0.72rem, 2vw, 0.85rem);
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   color: var(--text-primary);
   font-weight: 600;
+  min-width: 0;
 }
 
 .dash-status {
@@ -280,28 +328,34 @@
   align-items: center;
   gap: 0.4rem;
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: clamp(0.68rem, 1.8vw, 0.75rem);
   color: var(--accent-green);
+  flex-shrink: 0;
 }
 
 .dash-metrics-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(0.4rem, 1.5vw, 1rem);
   margin-bottom: 1.75rem;
+  min-width: 0;
+  width: 100%;
 }
 
 .dash-metric-box {
-  padding: 1.25rem 0.75rem;
+  padding: clamp(0.85rem, 2vw, 1.25rem) clamp(0.25rem, 1vw, 0.75rem);
   background-color: var(--bg-primary);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-xs);
   text-align: center;
+  min-width: 0;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .metric-num {
   font-family: var(--font-serif);
-  font-size: clamp(1.75rem, 3.5vw, 2.3rem);
+  font-size: clamp(1.35rem, 3.5vw, 2.3rem);
   line-height: 1;
   color: var(--text-primary);
   margin-bottom: 0.35rem;
@@ -309,47 +363,57 @@
 
 .metric-lbl {
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: clamp(0.55rem, 1.6vw, 0.68rem);
   color: var(--text-muted);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  line-height: 1.3;
+  letter-spacing: 0.02em;
+  line-height: 1.25;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .dash-project-timeline {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+  min-width: 0;
+  width: 100%;
 }
 
 .timeline-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.65rem 0.85rem;
+  padding: 0.65rem clamp(0.5rem, 1.5vw, 0.85rem);
   background-color: var(--bg-subtle);
   border-radius: var(--radius-xs);
-  font-size: 0.825rem;
-  gap: 0.75rem;
+  font-size: clamp(0.72rem, 1.8vw, 0.825rem);
+  gap: 0.65rem;
+  min-width: 0;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .timeline-name {
   font-weight: 500;
   color: var(--text-primary);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  min-width: 0;
+  flex: 1 1 auto;
+  line-height: 1.35;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .timeline-badge {
   font-family: var(--font-mono);
-  font-size: 0.7rem;
-  padding: 0.2rem 0.55rem;
+  font-size: clamp(0.62rem, 1.5vw, 0.7rem);
+  padding: 0.2rem 0.5rem;
   border-radius: var(--radius-pill);
   background-color: rgba(16, 185, 129, 0.12);
   color: var(--accent-green);
   font-weight: 500;
   flex-shrink: 0;
+  white-space: nowrap;
 }
 
 /* ── Section 8: Engagement Models (Replaces fixed pricing table) ── */
@@ -358,6 +422,8 @@
   padding-bottom: clamp(3.5rem, 7vw, 7.5rem);
   border-bottom: 1px solid var(--border-subtle);
   background-color: var(--bg-surface);
+  overflow: hidden;
+  max-width: 100%;
 }
 
 .partnership-header {
@@ -370,6 +436,8 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 310px), 1fr));
   gap: 1.75rem;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .partnership-card {
@@ -380,6 +448,9 @@
   display: flex;
   flex-direction: column;
   transition: all var(--transition-base);
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .partnership-card.highlighted {
