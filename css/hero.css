@@ -1,0 +1,62 @@
+/* ==========================================================================
+   hero.css — Editorial Hero Section
+   Matches 42district's Caslon condensed headline & italic emphasis
+   ========================================================================== */
+
+.hero-section {
+  position: relative;
+  padding-top: clamp(4rem, 9vw, 8rem);
+  padding-bottom: clamp(3.5rem, 8vw, 6.5rem);
+  border-bottom: 1px solid var(--border-subtle);
+  background: radial-gradient(circle at 50% 0%, rgba(247, 242, 234, 0.7) 0%, rgba(254, 250, 243, 0) 70%);
+}
+
+.hero-inner {
+  max-width: 980px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.hero-badge-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: var(--spacing-xl);
+}
+
+.hero-headline {
+  margin-bottom: var(--spacing-lg);
+  font-family: var(--font-serif);
+  font-size: clamp(2.75rem, 5.8vw, 5rem);
+  font-weight: 400;
+  line-height: 1.04;
+  letter-spacing: -0.025em;
+  color: var(--text-primary);
+}
+
+.hero-headline .font-italic {
+  display: inline;
+}
+
+.hero-subheadline {
+  font-size: clamp(1.1rem, 1.6vw, 1.35rem);
+  color: var(--text-secondary);
+  line-height: 1.55;
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: var(--spacing-2xl);
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.hero-actions .btn-pill {
+  padding: 0.9rem 2rem;
+  font-size: 0.95rem;
+}

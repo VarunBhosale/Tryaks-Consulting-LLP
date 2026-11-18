@@ -1,0 +1,95 @@
+/* ==========================================================================
+   typography.css — Editorial Serif & Clean Sans Typography Hierarchy
+   Exact match to 42district's Caslon / Grotesk / Mono pairings
+   ========================================================================== */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+h1 {
+  font-size: clamp(2.6rem, 5.5vw, 4.75rem);
+  line-height: 1.05;
+}
+
+h2 {
+  font-size: clamp(2rem, 3.8vw, 3.25rem);
+  line-height: 1.12;
+}
+
+h3 {
+  font-size: clamp(1.4rem, 2.2vw, 1.85rem);
+  line-height: 1.25;
+}
+
+h4 {
+  font-size: 1.15rem;
+  line-height: 1.35;
+}
+
+p {
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+/* ── Editorial Italic Signature ── */
+.font-italic {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* ── Monospace Eyebrow & Badges ── */
+.mono-label {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-secondary);
+}
+
+.mono-tag {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--text-secondary);
+}
+
+/* ── Section Header Block ── */
+.section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-md);
+}
+
+.section-eyebrow::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--text-primary);
+}
+
+.section-title {
+  margin-bottom: var(--spacing-lg);
+}
+
+.section-lead {
+  font-size: clamp(1.05rem, 1.4vw, 1.25rem);
+  color: var(--text-secondary);
+  max-width: 680px;
+  line-height: 1.6;
+}
