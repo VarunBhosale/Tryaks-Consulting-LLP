@@ -1,6 +1,6 @@
 /* ==========================================================================
    components.css — Reusable UI Components & Atoms
-   Pill buttons, status badges, cards, dividers
+   Pill buttons, status badges, cards, dividers, touch & safe-area utilities
    ========================================================================== */
 
 /* ── Container ── */
@@ -11,6 +11,8 @@
   margin-right: auto;
   padding-left: var(--container-padding);
   padding-right: var(--container-padding);
+  padding-left: max(var(--container-padding), env(safe-area-inset-left));
+  padding-right: max(var(--container-padding), env(safe-area-inset-right));
 }
 
 .container-narrow {
@@ -20,6 +22,8 @@
   margin-right: auto;
   padding-left: var(--container-padding);
   padding-right: var(--container-padding);
+  padding-left: max(var(--container-padding), env(safe-area-inset-left));
+  padding-right: max(var(--container-padding), env(safe-area-inset-right));
 }
 
 /* ── Buttons ── */
@@ -29,6 +33,7 @@
   justify-content: center;
   gap: 0.65rem;
   padding: 0.75rem 1.6rem;
+  min-height: 44px; /* Touch target minimum per WCAG/Apple guidelines */
   border-radius: var(--radius-pill);
   font-family: var(--font-sans);
   font-size: var(--font-size-sm);
@@ -38,6 +43,7 @@
   text-decoration: none;
   cursor: pointer;
   white-space: nowrap;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .btn-pill-dark {
@@ -46,21 +52,10 @@
   border: 1px solid var(--bg-dark);
 }
 
-.btn-pill-dark:hover {
-  background-color: var(--bg-dark-hover);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 14px rgba(47, 44, 37, 0.18);
-}
-
 .btn-pill-outline {
   background-color: transparent;
   color: var(--text-primary);
   border: 1px solid var(--border-medium);
-}
-
-.btn-pill-outline:hover {
-  background-color: rgba(47, 44, 37, 0.05);
-  border-color: var(--text-primary);
 }
 
 .btn-pill-light {
@@ -69,9 +64,32 @@
   border: 1px solid var(--border-subtle);
 }
 
-.btn-pill-light:hover {
-  background-color: var(--bg-primary);
-  border-color: var(--border-medium);
+/* Desktop Hover States Only (prevents sticky hover on touchscreens) */
+@media (hover: hover) and (pointer: fine) {
+  .btn-pill-dark:hover {
+    background-color: var(--bg-dark-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(47, 44, 37, 0.18);
+  }
+
+  .btn-pill-outline:hover {
+    background-color: rgba(47, 44, 37, 0.05);
+    border-color: var(--text-primary);
+  }
+
+  .btn-pill-light:hover {
+    background-color: var(--bg-primary);
+    border-color: var(--border-medium);
+  }
+
+  .btn-pill:hover .btn-arrow {
+    transform: translateX(3px);
+  }
+}
+
+/* Touch active state */
+.btn-pill:active {
+  transform: scale(0.98);
 }
 
 .btn-arrow {
@@ -79,8 +97,12 @@
   transition: transform var(--transition-fast);
 }
 
-.btn-pill:hover .btn-arrow {
-  transform: translateX(3px);
+.btn-block {
+  width: 100%;
+}
+
+.mobile-nav-cta {
+  display: none;
 }
 
 /* ── Status Badge (42district signature) ── */
@@ -97,11 +119,13 @@
   font-weight: 500;
   color: var(--text-secondary);
   box-shadow: var(--shadow-subtle);
+  max-width: 100%;
 }
 
 .status-dot {
   width: 7px;
   height: 7px;
+  flex-shrink: 0;
   border-radius: 50%;
   background-color: var(--accent-green);
   box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
@@ -137,7 +161,21 @@
   transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
 }
 
-.editorial-card:hover {
-  border-color: var(--border-medium);
-  box-shadow: var(--shadow-card);
+@media (hover: hover) and (pointer: fine) {
+  .editorial-card:hover {
+    border-color: var(--border-medium);
+    box-shadow: var(--shadow-card);
+  }
+}
+
+
+/* ── Scroll Margin for Sticky Header Offset ── */
+section[id], footer[id] {
+  scroll-margin-top: 84px;
+}
+
+@media (max-width: 860px) {
+  section[id], footer[id] {
+    scroll-margin-top: 72px;
+  }
 }

@@ -1,11 +1,24 @@
 /* ==========================================================================
-   responsive.css — Mobile & Tablet Viewport Adaptations
+   responsive.css — Universal Multi-Device Compatibility
+   Covers phones (320px+), foldables, tablets (portrait/landscape),
+   laptops, desktops, ultra-wide screens & touch input
    ========================================================================== */
 
-@media (max-width: 1080px) {
-  .services-grid,
-  .partnership-grid {
-    grid-template-columns: repeat(2, 1fr);
+/* ── 1. Large Laptops & Standard Desktops (max-width: 1200px) ── */
+@media (max-width: 1200px) {
+  :root {
+    --container-padding: 1.75rem;
+  }
+
+  .nav-menu {
+    gap: 1.25rem;
+  }
+}
+
+/* ── 2. Tablets (iPad / Tablet Landscape & Portrait: max-width: 1024px) ── */
+@media (max-width: 1024px) {
+  :root {
+    --container-padding: 1.5rem;
   }
 
   .philosophy-grid,
@@ -14,40 +27,70 @@
     gap: 3rem;
   }
 
+  .philosophy-left {
+    max-width: 720px;
+  }
+
+  .dashboard-copy {
+    max-width: 720px;
+  }
+
   .footer-top-grid {
     grid-template-columns: 1fr;
     gap: 3rem;
   }
+
+  .footer-brand-wrap {
+    max-width: 540px;
+  }
 }
 
-@media (max-width: 768px) {
-  :root {
-    --container-padding: 1.25rem;
-  }
-
+/* ── 3. Tablet Portrait, Phablets & Mobile (max-width: 860px) ── */
+@media (max-width: 860px) {
   .header-inner {
     height: 68px;
   }
 
+  /* Mobile Navigation Drawer with 100dvh support */
   .nav-menu {
     position: fixed;
     top: 68px;
     left: 0;
     width: 100%;
-    height: calc(100vh - 68px);
+    height: calc(100dvh - 68px);
     background-color: var(--bg-primary);
     flex-direction: column;
     align-items: flex-start;
     padding: 2rem 1.5rem;
-    gap: 1.25rem;
+    padding-bottom: max(2rem, env(safe-area-inset-bottom));
+    gap: 0.5rem;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
     transform: translateX(100%);
     transition: transform var(--transition-base);
     z-index: 999;
+    box-shadow: -4px 0 24px rgba(47, 44, 37, 0.08);
   }
 
   .nav-menu.is-active {
     transform: translateX(0);
+  }
+
+  .nav-link {
+    width: 100%;
+    font-size: 1.05rem;
+    font-weight: 600;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .nav-item-has-dropdown {
+    width: 100%;
+  }
+
+  .dropdown-trigger {
+    justify-content: space-between;
+    width: 100%;
   }
 
   .nav-item-has-dropdown .nav-dropdown {
@@ -57,9 +100,26 @@
     transform: none;
     box-shadow: none;
     border: none;
-    padding-left: 1rem;
+    background: transparent;
+    padding: 0.25rem 0 0.5rem 1rem;
     pointer-events: auto;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .dropdown-link {
+    font-size: 0.95rem;
+    padding: 0.55rem 0.5rem;
+    border-left: 2px solid var(--border-medium);
+    border-radius: 0;
+  }
+
+  .mobile-nav-cta {
+    display: block;
+    width: 100%;
+    margin-top: 1.5rem;
   }
 
   .header-actions .btn-pill {
@@ -70,9 +130,22 @@
     display: flex;
   }
 
-  .services-grid,
-  .partnership-grid {
-    grid-template-columns: 1fr;
+  /* Support Banner on Mobile / Tablet */
+  .support-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+  }
+
+  .support-banner .btn-pill {
+    width: 100%;
+  }
+}
+
+/* ── 4. Standard Mobile Screens (max-width: 640px) ── */
+@media (max-width: 640px) {
+  :root {
+    --container-padding: 1.15rem;
   }
 
   .footer-columns {
@@ -80,17 +153,132 @@
     gap: 2rem;
   }
 
-  .dash-metrics-grid {
-    grid-template-columns: 1fr;
-    gap: 0.75rem;
+  .showcase-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .showcase-card {
+    width: calc(100vw - 2.5rem);
+    min-width: 260px;
+    max-width: 330px;
   }
 
   .newsletter-form {
     flex-direction: column;
   }
 
+  .newsletter-form .btn-pill {
+    width: 100%;
+  }
+
   .footer-bottom-bar {
     flex-direction: column;
     align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  .footer-legal-links {
+    gap: 1rem;
+  }
+}
+
+/* ── 5. Small Phones (iPhone SE, Galaxy S/Fold: max-width: 440px) ── */
+@media (max-width: 440px) {
+  :root {
+    --container-padding: 1rem;
+  }
+
+  .brand-title {
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+  }
+
+  .brand-subtitle {
+    font-size: 0.6rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero-actions .btn-pill {
+    width: 100%;
+    text-align: center;
+  }
+
+  .status-badge {
+    font-size: 0.7rem;
+    padding: 0.35rem 0.75rem;
+  }
+
+  .quote-pill {
+    font-size: 0.8rem;
+    padding: 0.6rem 0.9rem;
+    line-height: 1.4;
+  }
+
+  /* Metric boxes on small phones */
+  .dash-metrics-grid {
+    gap: 0.5rem;
+  }
+
+  .dash-metric-box {
+    padding: 0.85rem 0.35rem;
+  }
+
+  .metric-num {
+    font-size: 1.5rem;
+  }
+
+  .metric-lbl {
+    font-size: 0.62rem;
+  }
+
+  .timeline-row {
+    font-size: 0.75rem;
+    padding: 0.5rem 0.65rem;
+  }
+
+  .tech-pill {
+    padding: 0.45rem 0.85rem;
+    font-size: 0.75rem;
+  }
+}
+
+/* ── 6. Ultra-Small Phones (max-width: 360px) ── */
+@media (max-width: 360px) {
+  .dash-metrics-grid {
+    grid-template-columns: 1fr;
+    gap: 0.65rem;
+  }
+
+  .hero-headline {
+    font-size: 1.85rem;
+  }
+}
+
+/* ── 7. Touch Device Gestures & Accessibility ── */
+@media (hover: none) and (pointer: coarse) {
+  /* Optimize touch target taps */
+  a, button, input {
+    touch-action: manipulation;
+  }
+}
+
+/* ── 8. Accessibility: Reduced Motion Preference ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .marquee-track {
+    animation: none !important;
+    transform: none !important;
+    overflow-x: auto;
   }
 }

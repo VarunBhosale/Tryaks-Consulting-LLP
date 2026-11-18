@@ -1,49 +1,60 @@
 /* ==========================================================================
    ticker.css — Technology Ecosystem Marquee & Ticker Badges
    Matches 42district's ecosystem grid / pill marquee
+   Hardware-accelerated smooth scrolling across all devices
    ========================================================================== */
 
 .ticker-section {
-  padding-top: clamp(3rem, 6vw, 4.5rem);
-  padding-bottom: clamp(3rem, 6vw, 4.5rem);
+  padding-top: clamp(2.5rem, 5vw, 4.5rem);
+  padding-bottom: clamp(2.5rem, 5vw, 4.5rem);
   background-color: var(--bg-surface);
   border-bottom: 1px solid var(--border-subtle);
   overflow: hidden;
+  width: 100%;
 }
 
 .ticker-header {
   text-align: center;
   max-width: 600px;
-  margin: 0 auto var(--spacing-xl) auto;
+  margin: 0 auto clamp(1.25rem, 3vw, var(--spacing-xl)) auto;
+  padding: 0 1rem;
 }
 
 .ticker-header p {
   font-family: var(--font-sans);
-  font-size: 0.95rem;
+  font-size: clamp(0.85rem, 1.2vw, 0.95rem);
   font-weight: 500;
   color: var(--text-secondary);
+  line-height: 1.45;
 }
 
 .ticker-marquee {
   display: flex;
   flex-direction: column;
-  gap: 0.85rem;
+  gap: 0.75rem;
   width: 100%;
+  overflow: hidden;
 }
 
 .marquee-track {
   display: flex;
-  gap: 0.85rem;
+  gap: 0.75rem;
   width: max-content;
   animation: marquee-scroll 32s linear infinite;
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 .marquee-track-reverse {
   animation: marquee-scroll-reverse 35s linear infinite;
+  will-change: transform;
+  transform: translateZ(0);
 }
 
-.ticker-marquee:hover .marquee-track {
-  animation-play-state: paused;
+@media (hover: hover) and (pointer: fine) {
+  .ticker-marquee:hover .marquee-track {
+    animation-play-state: paused;
+  }
 }
 
 @keyframes marquee-scroll {
@@ -70,12 +81,19 @@
   color: var(--text-primary);
   transition: all var(--transition-fast);
   white-space: nowrap;
+  -webkit-tap-highlight-color: transparent;
 }
 
-.tech-pill:hover {
-  background-color: var(--bg-dark);
-  color: var(--text-inverse);
-  border-color: var(--bg-dark);
+@media (hover: hover) and (pointer: fine) {
+  .tech-pill:hover {
+    background-color: var(--bg-dark);
+    color: var(--text-inverse);
+    border-color: var(--bg-dark);
+  }
+
+  .tech-pill:hover .tech-pill-dot {
+    background-color: var(--accent-green);
+  }
 }
 
 .tech-pill-dot {
@@ -83,8 +101,5 @@
   height: 6px;
   border-radius: 50%;
   background-color: var(--text-muted);
-}
-
-.tech-pill:hover .tech-pill-dot {
-  background-color: var(--accent-green);
+  flex-shrink: 0;
 }

@@ -1,22 +1,18 @@
 /* ==========================================================================
-   carousel.css — Client Work Showcase & Horizontal Carousel
-   Exact 42district real client case studies card style
+   carousel.css — Client Work Showcase & Automatic Flow Carousel
+   Full-bleed image cards with white text & "See their story" button
+   Matching exact 42district design from screenshot
    ========================================================================== */
 
 .showcase-section {
-  padding-top: clamp(3.5rem, 7vw, 5.5rem);
-  padding-bottom: clamp(4rem, 8vw, 6.5rem);
+  padding-top: clamp(3rem, 6vw, 5.5rem);
+  padding-bottom: clamp(3.5rem, 7vw, 6.5rem);
   border-bottom: 1px solid var(--border-subtle);
   overflow: hidden;
 }
 
 .showcase-header {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  margin-bottom: var(--spacing-2xl);
-  flex-wrap: wrap;
-  gap: 1.5rem;
+  margin-bottom: clamp(1.5rem, 3.5vw, var(--spacing-2xl));
 }
 
 .showcase-title-wrap {
@@ -25,52 +21,21 @@
 
 .showcase-title {
   font-family: var(--font-sans);
-  font-size: clamp(1rem, 1.4vw, 1.2rem);
+  font-size: clamp(0.95rem, 1.3vw, 1.2rem);
   font-weight: 500;
   color: var(--text-secondary);
   line-height: 1.45;
 }
 
-.carousel-controls {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.carousel-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  border: 1px solid var(--border-medium);
-  background-color: var(--bg-surface);
-  color: var(--text-primary);
-  transition: all var(--transition-fast);
-  cursor: pointer;
-}
-
-.carousel-btn:hover {
-  background-color: var(--bg-dark);
-  color: var(--text-inverse);
-  border-color: var(--bg-dark);
-}
-
-.carousel-btn:disabled {
-  opacity: 0.35;
-  cursor: not-allowed;
-  pointer-events: none;
-}
-
-/* ── Horizontal Scroll Track ── */
+/* ── Horizontal Scroll Track with Auto-Flow ── */
 .carousel-viewport {
   width: 100%;
-  overflow-x: auto;
-  scroll-behavior: smooth;
+  overflow-x: hidden; /* Prevents manual drag / scroll interference */
+  scroll-behavior: auto;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE/Edge */
   padding-bottom: 1rem;
+  user-select: none;
 }
 
 .carousel-viewport::-webkit-scrollbar {
@@ -81,106 +46,120 @@
   display: flex;
   gap: 1.5rem;
   width: max-content;
+  padding: 0 4px;
+  will-change: transform;
 }
 
-/* ── Showcase Card ── */
+/* ── Full-Bleed Photo Showcase Card (Matches screenshot) ── */
 .showcase-card {
   width: 340px;
+  max-width: calc(100vw - 3rem);
+  height: 440px;
   flex-shrink: 0;
-  background-color: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-sm);
+  border-radius: 12px;
   overflow: hidden;
+  position: relative;
   display: flex;
   flex-direction: column;
-  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+  justify-content: flex-end;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
 }
 
-.showcase-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--border-medium);
-  box-shadow: var(--shadow-card);
+@media (hover: hover) and (pointer: fine) {
+  .showcase-card:hover {
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.16);
+  }
 }
 
-.card-image-wrap {
-  width: 100%;
-  height: 220px;
-  position: relative;
-  background-color: var(--bg-subtle);
-  overflow: hidden;
-}
-
-.card-image-wrap img {
+/* Dark Gradient Overlay for perfect text contrast */
+.showcase-card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  transition: transform var(--transition-smooth);
+  background: linear-gradient(
+    180deg,
+    rgba(18, 16, 14, 0.08) 0%,
+    rgba(18, 16, 14, 0.22) 40%,
+    rgba(18, 16, 14, 0.78) 75%,
+    rgba(18, 16, 14, 0.94) 100%
+  );
+  z-index: 1;
+  pointer-events: none;
 }
 
-.showcase-card:hover .card-image-wrap img {
-  transform: scale(1.04);
-}
-
-.card-image-overlay {
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-}
-
-.card-content {
-  padding: 1.5rem;
+/* Content block positioned over bottom of the card */
+.showcase-card-content {
+  position: relative;
+  z-index: 2;
+  padding: 1.75rem 1.6rem;
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
+  align-items: flex-start;
 }
 
-.card-client {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--text-muted);
-  margin-bottom: 0.35rem;
-}
-
-.card-headline {
+.showcase-card-title {
   font-family: var(--font-serif);
-  font-size: 1.45rem;
+  font-size: 1.65rem;
+  font-weight: 400;
   line-height: 1.15;
-  color: var(--text-primary);
-  margin-bottom: 0.75rem;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.015em;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
 }
 
-.card-description {
-  font-size: 0.875rem;
-  color: var(--text-secondary);
-  line-height: 1.5;
+.showcase-card-category {
+  font-family: var(--font-sans);
+  font-size: 0.925rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.96);
+  margin-bottom: 0.2rem;
+  line-height: 1.4;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.showcase-card-location {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.82);
   margin-bottom: 1.25rem;
-  flex-grow: 1;
+  line-height: 1.4;
 }
 
-.card-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-top: 1rem;
-  border-top: 1px solid var(--border-subtle);
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--text-muted);
-}
-
-.card-link {
+/* "See their story" White Button — exactly matching the screenshot */
+.showcase-card-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
+  justify-content: center;
+  background-color: #ffffff;
+  color: #2f2c25;
   font-family: var(--font-sans);
-  font-size: 0.825rem;
+  font-size: 0.875rem;
   font-weight: 600;
-  color: var(--text-primary);
+  padding: 0.65rem 1.35rem;
+  border-radius: 8px; /* Clean rounded-rectangle as shown in the image */
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+  transition: opacity var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+  -webkit-tap-highlight-color: transparent;
 }
 
-.card-link:hover {
-  text-decoration: underline;
+@media (hover: hover) and (pointer: fine) {
+  .showcase-card-btn:hover {
+    opacity: 0.92;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  }
+}
+
+.showcase-card-btn:active {
+  transform: scale(0.97);
 }

@@ -1,6 +1,7 @@
 /* ==========================================================================
    typography.css — Editorial Serif & Clean Sans Typography Hierarchy
    Exact match to 42district's Caslon / Grotesk / Mono pairings
+   Fluid typography scaling across all screen sizes
    ========================================================================== */
 
 h1, h2, h3, h4, h5, h6 {
@@ -9,31 +10,33 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.1;
   letter-spacing: -0.02em;
   color: var(--text-primary);
+  overflow-wrap: break-word;
 }
 
 h1 {
-  font-size: clamp(2.6rem, 5.5vw, 4.75rem);
-  line-height: 1.05;
+  font-size: clamp(2rem, 5.5vw, 4.75rem);
+  line-height: 1.08;
 }
 
 h2 {
-  font-size: clamp(2rem, 3.8vw, 3.25rem);
-  line-height: 1.12;
+  font-size: clamp(1.75rem, 3.8vw, 3.25rem);
+  line-height: 1.14;
 }
 
 h3 {
-  font-size: clamp(1.4rem, 2.2vw, 1.85rem);
+  font-size: clamp(1.3rem, 2.2vw, 1.85rem);
   line-height: 1.25;
 }
 
 h4 {
-  font-size: 1.15rem;
+  font-size: clamp(1rem, 1.5vw, 1.15rem);
   line-height: 1.35;
 }
 
 p {
   color: var(--text-secondary);
   line-height: 1.65;
+  overflow-wrap: break-word;
 }
 
 /* ── Editorial Italic Signature ── */
@@ -81,6 +84,7 @@ p {
   height: 6px;
   border-radius: 50%;
   background-color: var(--text-primary);
+  flex-shrink: 0;
 }
 
 .section-title {
@@ -88,7 +92,7 @@ p {
 }
 
 .section-lead {
-  font-size: clamp(1.05rem, 1.4vw, 1.25rem);
+  font-size: clamp(1rem, 1.3vw, 1.25rem);
   color: var(--text-secondary);
   max-width: 680px;
   line-height: 1.6;

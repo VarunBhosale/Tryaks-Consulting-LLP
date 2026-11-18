@@ -1,30 +1,42 @@
 /* ==========================================================================
-   carousel.css / carousel.js — Showcase Horizontal Scroll Controller
+   carousel.js — Uninterrupted Continuous Flow Showcase Ribbon
+   Constant smooth motion that never stops on hover or card click.
+   Only clicking the "See their story" button redirects the user.
    ========================================================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
   const viewport = document.getElementById("showcaseViewport");
-  const prevBtn = document.getElementById("carouselPrev");
-  const nextBtn = document.getElementById("carouselNext");
+  const track = viewport ? viewport.querySelector(".carousel-track") : null;
 
-  if (!viewport || !prevBtn || !nextBtn) return;
+  if (!viewport || !track) return;
 
-  const scrollAmount = 360; // Card width + gap
+  // Clone original cards to construct a seamless, infinite ribbon loop
+  const originalCards = Array.from(track.children);
+  if (originalCards.length === 0) return;
 
-  const updateControls = () => {
-    prevBtn.disabled = viewport.scrollLeft <= 10;
-    nextBtn.disabled = viewport.scrollLeft + viewport.clientWidth >= viewport.scrollWidth - 10;
+  originalCards.forEach((card) => {
+    const clone = card.cloneNode(true);
+    clone.setAttribute("aria-hidden", "true");
+    track.appendChild(clone);
+  });
+
+  const speed = 0.85; // Natural continuous glide velocity (~50px/second)
+
+  // Half width represents the exact total width of the original card set
+  const getLoopThreshold = () => {
+    return track.scrollWidth / 2;
   };
 
-  prevBtn.addEventListener("click", () => {
-    viewport.scrollBy({ left: -scrollAmount, behavior: "smooth" });
-  });
+  // Continuous auto-flow loop via requestAnimationFrame
+  // Flows uninterrupted across hover, touch, and card clicks
+  const autoFlow = () => {
+    viewport.scrollLeft += speed;
+    const threshold = getLoopThreshold();
+    if (viewport.scrollLeft >= threshold) {
+      viewport.scrollLeft -= threshold;
+    }
+    requestAnimationFrame(autoFlow);
+  };
 
-  nextBtn.addEventListener("click", () => {
-    viewport.scrollBy({ left: scrollAmount, behavior: "smooth" });
-  });
-
-  viewport.addEventListener("scroll", updateControls, { passive: true });
-  window.addEventListener("resize", updateControls);
-  updateControls();
+  requestAnimationFrame(autoFlow);
 });
